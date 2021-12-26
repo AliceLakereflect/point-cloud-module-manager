@@ -1,0 +1,36 @@
+<div class="d-flex align-items-center">
+  <div class="container">
+    <div class="row m-3">
+      <div class="col-md-8 col-xs-12 justify-content-center">
+        <form [formGroup]="form">
+          <div class="form-group">
+            <div class="form-inline">
+              <div class="flex-grow-1">
+                <ng-select [items]="pcModules" 
+                  bindLabel="name" 
+                  bindValue="id" 
+                  formControlName="selectedModule">
+                </ng-select>
+              </div>
+              <div class="m-1">
+                <button type="button" class="btn btn-sm btn-success">Add</button>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-sm btn-primary" (click)="submit()">Submit</button>
+        </form>
+      </div>
+    </div>
+    <div class="row" [hidden]="moduleUIHide">
+      <div class="col">
+        <div class="card-group">
+          <div class="card p-4">
+              <div class="card-body">
+                <p>display modules UI</p>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
