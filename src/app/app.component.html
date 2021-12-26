@@ -9,11 +9,11 @@
                 <ng-select [items]="pcModules" 
                   bindLabel="name" 
                   bindValue="id" 
-                  formControlName="selectedModule">
+                  formControlName="selectedModuleId">
                 </ng-select>
               </div>
               <div class="m-1">
-                <button type="button" class="btn btn-sm btn-success">Add</button>
+                <button type="button" class="btn btn-sm btn-success" (click)="openModal()"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
               </div>
             </div>
           </div>
@@ -21,12 +21,21 @@
         </form>
       </div>
     </div>
-    <div class="row" [hidden]="moduleUIHide">
+    <div class="row" *ngIf="selectedModule$ | async as selectedModule">
       <div class="col">
         <div class="card-group">
           <div class="card p-4">
               <div class="card-body">
-                <p>display modules UI</p>
+                <h5>Module Name</h5>
+                <p>{{selectedModule.name}}</p>
+                <h5>Module Url</h5>
+                <p>{{selectedModule.url}}</p>
+                <div *ngIf="this.selectedModule.needUploadFile">
+                  <div class="form-group">
+                    <h5>Upload files</h5>
+                    <input type="file" />
+                  </div>
+                </div>
               </div>
           </div>
         </div>

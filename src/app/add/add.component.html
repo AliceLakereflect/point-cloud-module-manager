@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Add a new Module</h4>
+    <button type="button" class="btn-close close pull-right" (click)="close()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="form" #formDir="ngForm">
+        <div class="form-group">
+          <label for="moduleName">Module Name</label>
+          <input type="text" class="form-control" id="moduleName" aria-describedby="moduleNameHelp" [formControl]="form.controls.moduleName">
+          <small id="moduleNameHelp" class="form-text text-muted">Your module name.</small>
+          <div *ngIf="form.controls.moduleName.invalid && (!form.controls.moduleName.pristine || formDir.submitted)">
+            <small class="text-danger">This field is invalid</small>
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="moduleUrl">Module Url</label>
+            <input type="text" class="form-control" id="moduleUrl" aria-describedby="moduleUrlHelp" [formControl]="form.controls.moduleUrl">
+            <small id="moduleUrlHelp" class="form-text text-muted">Your module api url.</small>
+            <div *ngIf="form.controls.moduleUrl.invalid && (!form.controls.moduleUrl.pristine || formDir.submitted)">
+                <small class="text-danger">This field is invalid</small>
+            </div>
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="uploadFileCheckbox" [formControl]="form.controls.uploadFileCheckbox">
+          <label class="form-check-label" for="uploadFileCheckbox">Need to upload files for your module</label>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-sm btn-secondary" (click)="close()">Cancel</button>
+<button type="button" class="btn btn-sm btn-primary" (click)="add()">Add Module</button>
+</div>
