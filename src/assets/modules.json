@@ -1,6 +1,0 @@
-[
-    { "id": 1, "name": "Volvo", "url": "Volvo url", "needUploadFile": true },
-    { "id": 2, "name": "Saab", "url": "Saab url", "needUploadFile": false },
-    { "id": 3, "name": "Opel", "url": "Opel url", "needUploadFile": false },
-    { "id": 4, "name": "Audi", "url": "Audi url", "needUploadFile": false }
-]

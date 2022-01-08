@@ -6,7 +6,7 @@
           <div class="form-group">
             <div class="form-inline">
               <div class="flex-grow-1">
-                <ng-select [items]="pcModules" 
+                <ng-select [items]="pcModules$ | async" 
                   bindLabel="name" 
                   bindValue="id" 
                   formControlName="selectedModuleId">
@@ -26,16 +26,31 @@
         <div class="card-group">
           <div class="card p-4">
               <div class="card-body">
-                <h5>Module Name</h5>
-                <p>{{selectedModule.name}}</p>
-                <h5>Module Url</h5>
-                <p>{{selectedModule.url}}</p>
-                <div *ngIf="this.selectedModule.needUploadFile">
-                  <div class="form-group">
-                    <h5>Upload files</h5>
-                    <input type="file" />
+                <form [formGroup]="moduleForm" #formDir="ngForm">
+                  <h5>Module Name</h5>
+                  <p>{{selectedModule.name}}</p>
+                  <h5>Module Url</h5>
+                  <p>{{selectedModule.url}}</p>
+                  <div *ngIf="selectedModule.needUploadFile">
+                    <div class="form-group">
+                      <h5>Upload files</h5>
+                      <input type="file" class="form-control" formControlName="files"/>
+                      <div *ngIf="moduleForm.controls.files.invalid && (!moduleForm.controls.files.pristine || formDir.submitted)">
+                        <small class="text-danger">This field is required</small>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                  <div *ngIf="selectedModule.needCommand">
+                    <div class="form-group">
+                      <h5>Command</h5>
+                      <input type="text" class="form-control" formControlName="command"/>
+                      <div *ngIf="moduleForm.controls.command.invalid && (!moduleForm.controls.command.pristine || formDir.submitted)">
+                        <small class="text-danger">This field is required</small>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-success" (click)="execute()">Execute</button>
+                </form>
               </div>
           </div>
         </div>

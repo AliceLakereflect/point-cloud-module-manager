@@ -3,4 +3,5 @@ export class PointCloudModule{
     name: string;
     url: string;
     needUploadFile: boolean;
+    needCommand: boolean;
 }

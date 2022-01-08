@@ -9,6 +9,8 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddComponent } from './add/add.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
+import { ModuleDataService } from './module-data.service';
 
 
 @NgModule({
@@ -23,12 +25,13 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ButtonsModule,
     ReactiveFormsModule,
     CommonModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     ModalModule.forRoot(),
   ],
   entryComponents: [AddComponent],
-  providers: [],
+  providers: [ModuleDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
